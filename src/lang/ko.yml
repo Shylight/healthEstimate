@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 healthEstimate:
     core:
         onlyGM:
@@ -52,8 +60,8 @@ healthEstimate:
             hint: 토큰이 있는 사물에 대해 유용하다.
     menuSettings:
         fontSize:
-            name: 폰트 사이즈
-            hint: CSS 폰트 사이즈에 대한 유효 속성을 적용한다
+            name: 글꼴 크기
+            hint: CSS 글꼴 크기에 대한 유효 속성을 적용한다
         color:
             name: 색상
             hint: 설명을 현재 상태에 맞춰 녹색에서 적색에 이르는 그라데이션으로 표시한다
@@ -78,6 +86,16 @@ healthEstimate:
                 hint:   >-
                          위치는 프레임에 비례하여 설정된다. 이 숫자를 수정하여 원위치에서 조정할 수 있다. 양의 숫자는 더 낮게, 음의 숫자는 더 높게 밀어낸다.
                          기본값의 -1 설정은 "초기 위치 위의 1줄"로 설정된다.
+    
+    dnd5e:
+        vehicleNames:
+            hint: "차량 임계값"이 꺼져 있는 경우 차량에 대한 설명 표시
+            default:     #차량 상태에 대한 공식 설명은 없으므로, 언어에 가장 적합하다고 생각하는 항목으로 표현하세요
+                - 완파
+                - 반파
+                - 부서짐
+                - 흠집
+                - 정상
     PF1:
         showExtra:
             name: Disabled & Dying
