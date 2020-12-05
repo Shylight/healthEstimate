@@ -1,29 +1,34 @@
 healthEstimate:
     core:
         onlyGM:
-            name: Que pour le MJ
-            hint: Si activé, l''estimation n''est visible que pour le MJ.
+            name: MJ Uniquement
+            hint: Afficher uniquement les estimations au MJ. 
+        onlyNotGM:
+            name: Joueurs uniquement
+            hint: Afficher uniquement les estimations aux joueurs.            
         onlyNPCs:
-            name: Que pour les PNJs
-            hint: Si activé, l'estimation n'est visible que pour les PNJs, mais pas pour les PJs.
+            name: PNJ uniquement
+            hint: Afficher uniquement les estimations pour les PNJ, mais pas pour les PJ. Cette option affecte uniquement les PJ.
+        onlyPCs:
+            name: PJ uniquement
+            hint: Afficher uniquement les estimations pour les PJ, mais pas pour les PNJ. Cette option affecte uniquement les PJ.       
         stateNames:
             name: Etapes
             hint: Série de descriptions présentées aux joueurs, classées du pire au meilleur état de santé possible.
             default:
                 - Inconscient
-                - Presque mort
+                - Mourant
                 - Grièvement blessé
                 - Blessé
-                - Mouche Rouge
                 - Légèrement blessé
                 - Indemne
         deathState:
-            name: État de décès sous condition
+            name: État Mort sous condition
             hint: >-
-                Indiquer qu'il est mort lorsqu'il a été marqué d'une condition
+                Indiquer que le token est mort lorsqu'il a été marqué d'une condition
                 spécifique. Fonctionne indépendamment de la macro.
         deathStateName:
-            name: Nom de l'État de mort
+            name: Nom de l'État de Mort
             hint: >-
                 Description montrée aux joueurs lorsque le token est mort. L'onglet
                 Compendium contient une macro permettant de marquer un token (ou
@@ -37,29 +42,64 @@ healthEstimate:
                 Pour obtenir l'emplacement du symbole personnalisé, sélectionnez un
                 token marqué avec celui-ci, ouvrez la console et entrez
                 "canvas.tokens.controlled[0].data.overlayEffect"
-        addTemp:
-            name: Ajout de PV Temporaraires
+        NPCsJustDie:
+            name: Mort immédiate des PNJ
             hint: >-
-                Inclure des points de vie temporaires dans le calcul de la description à
+                  Si activé, la description la plus basse dans la liste des descriptions ne sera pas affichée pour les PNJ.
+                  Ils seront directement indiqués comme morts.
+        perfectionism:
+            name: Perfectionnisme
+            hint: Afficher uniquement la meilleure description possible quand la cible est en état parfait - pas de dégâts subis.
+        addTemp:
+            name: Ajout de PV Temporaires
+            hint: >-
+                Inclure les points de vie temporaires dans le calcul de la description à
                 afficher.
 
-                Par exemple, si le paramètre est activé, le token recevant le point de
-                vie temporaire aura l'air "plus sain " à moins qu'il ne soit déjà au
-                maximum de sa santé.
-        fontSize:
-            name: Taille de la Police
-            hint: Accepte toute propriété valable pour CSS font-size
-        color:
-            name: Couleur
-            hint: >-
-                Est ce que les descriptions doivent-elles être mises en surbrillance via
-                un dégradé de couleurs allant du vert au rouge correspondant à l'état de
-                santé actuel ?
-        smoothGradient:
-            name: Dégradé progressif
-            hint: >-
-                Avec ce réglage, la couleur ne changera que lorsque la description
-                suivante sera atteinte. Un pourcentage de santé sera indiqué.
+                Par exemple, si l'option est activée, le token recevant les point de
+                vie temporaire aura l'air en meilleure santé, à moins qu'il ne soit déjà au
+                maximum de ses points de vie.
+        breakOnZeroMaxHP:
+            name: Ne pas afficher pour les tokens à 0 PV Max
+            hint: Utile pour les tokens d'objets
+        menuSettings:
+            fontSize:
+                name: Taille de la police
+                hint: Accepte toute propriété valable pour CSS font-size
+            useColor:
+                name: Utiliser couleur
+                hint: Si désactivé, les descriptions s'afficheront en noir et blanc.
+            smoothGradient:
+                name: Smooth Gradient
+                hint: >-
+                      Si désactivé, la couleur changera seulement lorsque la description suivante est atteinte.
+                      Si activé, elle reflète le pourcentage de points de vie.
+            deadColor:
+                name: Couleur des tokens morts
+            outline:
+                name:     Contour
+                darken:   Assombri
+                brighten: Éclairci
+            position:
+                name: Position
+                top:    Haut
+                middle: Milieu
+                bottom: Bas
+            positionAdjustment:
+                name:   Ajuster la position
+                hint:   >-
+                        La position est relative au cadre. Ce chiffre vous permet de régler la position relative à son endroit
+                        normal. Des nombres positifs la descendent, des négatifs la remontent. La valeur par défaut de -1 la règle à
+                        "1 ligne au dessus de la position initiale".
+    dnd5e:
+        vehicleNames:
+            hint: Descriptions affichées pour les véhicules si "Utiliser le seuil de véhicule" is désactivé
+            default:
+                - Détruit
+                - Cassé
+                - Cabossé
+                - Éraflé
+                - Neuf
     PF1:
         showExtra:
             name: Hors-combat & Mourant
@@ -70,7 +110,7 @@ healthEstimate:
             default: Hors-combat
         dyingName:
             name: Mourant
-            hint: Description pour afficher lorsque le token est en dessous 0 PV
+            hint: Description pour afficher lorsque le token est en dessous de 0 PV
             default: Mourant
     numenera:
         countPools:
