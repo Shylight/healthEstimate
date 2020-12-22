@@ -74,7 +74,8 @@
 		"dnd5e",
 		"blades-in-the-dark",
 		"foundryvtt-reve-de-dragon",
-		"uesrpg-d100"
+		"uesrpg-d100",
+		"tormenta20"
 	],
 	"minimumCoreVersion": "0.5.0",
 	"compatibleCoreVersion": "0.7.7",
