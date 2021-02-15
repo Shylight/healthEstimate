@@ -51,6 +51,11 @@
 			"lang": "cn",
 			"name": "中文 (Chinese)",
 			"path": "./lang/cn.json"
+		},
+		{
+			"lang": "pt-BR",
+			"name": "Português (Brasil)",
+			"path": "./lang/pt-BR.json"
 		}
 	],
 	"systems": [
@@ -67,6 +72,7 @@
 		"shadowrun5e",
 		"swade",
 		"symbaroum",
+		"tormenta20",
 		"twodsix",
 		"wfrp4e",
 		"worldbuilding",
@@ -80,6 +86,5 @@
 	"compatibleCoreVersion": "0.7.7",
 	"url": "https://github.com/Shylight/healthEstimate",
 	"manifest": "https://raw.githubusercontent.com/Shylight/healthEstimate/master/src/module.json",
-	"download": "https://github.com/Shylight/healthEstimate/releases/download/2.4.0/healthEstimate-v2.4.0.zip",
 	"license": "https://choosealicense.com/licenses/mit/"
 }
