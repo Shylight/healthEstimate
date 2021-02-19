@@ -1,11 +1,3 @@
-# If you're unfamiliar with YAML, this comment will explain the syntax you can find in this file:
-#    "-" denotes a list item;
-#    ">-" and "|-" both allow you to break up text into several lines. The difference being "|-" keeps your linebreaks,
-#         while ">-" only adds a linebreak if you have an empty line in the text (see Death Marker entry for example)
-#
-# Generally you can just replace the text without having to worry about that.
-# However using an editor that can highlight the syntax could still be helpful.
-
 healthEstimate:
     core:
         onlyGM:
@@ -15,11 +7,11 @@ healthEstimate:
             name: Joueurs uniquement
             hint: Afficher uniquement les estimations aux joueurs.            
         onlyNPCs:
-            name: Que pour les PNJs
-            hint: Si activé, l'estimation n'est visible que pour les PNJs, mais pas pour les PJs. Cette configuration ne s'applique qu'aux Joueurs.
+            name: PNJs uniquement
+            hint: Afficher uniquement les estimations pour les PNJ, mais pas pour les PJ. Cette option affecte uniquement les PJ.
         onlyPCs:
-            name: PJ Seulement
-            hint: Si activé, l'estimation n'est visible que pour les PJs, mais pas pour les PNJs. Cette configuration ne s'applique qu'aux Joueurs.
+            name: PJs uniquement
+            hint: Afficher uniquement les estimations pour les PJ, mais pas pour les PNJ. Cette option affecte uniquement les PJ.
         stateNames:
             name: Etapes
             hint: >-
@@ -56,46 +48,44 @@ healthEstimate:
                 token marqué avec celui-ci, ouvrez la console et entrez
                 "canvas.tokens.controlled[0].data.overlayEffect"
         NPCsJustDie:
-            name: PNJs meurt immédiatement
+            name: Mort immédiate des PNJs
             hint: >-
-                Avec ce réglage activé, la description la plus basse en mode normal ie ''Inconscient'' ne sera pas affiché pour les PNJs.
-                A la place, ceux-ci seront marqués comme ''Mort''.
+                Si activé, la description la plus basse dans la liste des descriptions ne sera pas affichée pour les PNJs.
+                A la place, ceux-ci seront marqués avec l'état "Mort" directement.
         perfectionism:
             name: Perfectioniste
-            hint: Montre la description la meilleure uniquement si aucun dégat n'a été subit.
+            hint: Afficher la meilleure description possible uniquement si aucun dégat n'a été subit.
         addTemp:
             name: Ajout de PV Temporaires
             hint: >-
                 Inclure les points de vie temporaires dans le calcul de la description à
                 afficher.
 
-                Par exemple, si le paramètre est activé, le token recevant le point de
-                vie temporaire aura l'air "plus sain " à moins qu'il ne soit déjà au
-                maximum de sa santé.
+                Par exemple, si l'option est activée, le token recevant les points de
+                vie temporaire aura l'air en meilleure santé, à moins qu'il ne soit déjà au
+                maximum de ses points de vie.
         breakOnZeroMaxHP:
-            name: Cacher les token avec 0 Hp Max
+            name: Ne pas afficher pour les tokens à 0 PV Max
             hint: Utile pour les objets ayant un token
         menuSettings:
             fontSize:
-                name: Taille de la Police
+                name: Taille de la police
                 hint: Accepte toute propriété valable pour CSS font-size
             useColor:
-                name: Couleur
+                name: Utiliser couleur
                 hint: >-
-                    Est ce que les descriptions doivent-elles être mises en surbrillance via
-                    un dégradé de couleurs allant du vert au rouge correspondant à l'état de
-                    santé actuel ?
+                    Si désactivé, les descriptions s'afficheront en noir et blanc.
             smoothGradient:
                 name: Dégradé progressif
                 hint: >-
-                    Avec ce réglage, la couleur ne changera que lorsque la description
-                    suivante sera atteinte. Un pourcentage de santé sera indiqué.
+                    Si désactivé, la couleur changera seulement lorsque la description suivante est atteinte.
+                    Si activé, elle reflète le pourcentage de points de vie.
             deadColor:
                 name: Couleur pour les tokens morts
             outline:
                 name:       Contour
-                darken:     Plus sombre
-                brighten:   Plus clair
+                darken:     Assombri
+                brighten:   Éclairci
             position:
                 name: Position
                 top:    Haut
@@ -104,18 +94,18 @@ healthEstimate:
             positionAdjustment:
                 name:   Ajustement de la position
                 hint:   >-
-                        La position est relative à la frame. Le nombre vous permet d'ajuste la position relative par rapport à sa position normale. 
-                        Un nombre positif pousse le texte vers le bas, negatif vers le haut. La valeur par défaut est -1 est correspond à
+                        La position est relative au cadre. Le nombre vous permet d'ajuster la position relative par rapport à sa position normale. 
+                        Un nombre positif descend la description, un negatif la montre. La valeur par défaut est -1 et correspond à
                         "1 ligne en dessous de la position initiale".
     dnd5e:
         vehicleNames:
             hint: Descriptions shown for vehicles if "Use Vehicle Threshold" is off
             default:     #There are no official descriptions for the states of the vehicles, so feel free to go with what you feel will work best in your language
-                - Épave
-                - En Panne
-                - Endommagé
-                - Rayés
-                - Intacte
+                - Détruit
+                - Cassé
+                - Cabossé
+                - Éraflé
+                - Neuf
 
     PF1:
         showExtra:
