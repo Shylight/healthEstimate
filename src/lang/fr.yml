@@ -9,8 +9,11 @@
 healthEstimate:
     core:
         onlyGM:
-            name: Que pour le MJ
-            hint: Si activé, l''estimation n''est visible que pour le MJ.
+            name: MJ Uniquement
+            hint: Afficher uniquement les estimations au MJ. 
+        onlyNotGM:
+            name: Joueurs uniquement
+            hint: Afficher uniquement les estimations aux joueurs.            
         onlyNPCs:
             name: Que pour les PNJs
             hint: Si activé, l'estimation n'est visible que pour les PNJs, mais pas pour les PJs. Cette configuration ne s'applique qu'aux Joueurs.
@@ -27,19 +30,18 @@ healthEstimate:
                 S''il y a besoin d'une plage de pourcentage plus grande pour l''une des descriptions, copié simplement plusieurs fois ce nom dans la liste.
             default:
                 - Inconscient
-                - Presque mort
+                - Mourant
                 - Grièvement blessé
                 - Blessé
-                - Mouche Rouge
                 - Légèrement blessé
                 - Indemne
         deathState:
-            name: État de décès sous condition
+            name: État Mort sous condition
             hint: >-
-                Indiquer qu'il est mort lorsqu'il a été marqué d'une condition
+                Indiquer que le token est mort lorsqu'il a été marqué d'une condition
                 spécifique. Fonctionne indépendamment de la macro.
         deathStateName:
-            name: Nom de l'État de mort
+            name: Nom de l'État de Mort
             hint: >-
                 Description montrée aux joueurs lorsque le token est mort. L'onglet
                 Compendium contient une macro permettant de marquer un token (ou
@@ -62,9 +64,9 @@ healthEstimate:
             name: Perfectioniste
             hint: Montre la description la meilleure uniquement si aucun dégat n'a été subit.
         addTemp:
-            name: Ajout de PV Temporaraires
+            name: Ajout de PV Temporaires
             hint: >-
-                Inclure des points de vie temporaires dans le calcul de la description à
+                Inclure les points de vie temporaires dans le calcul de la description à
                 afficher.
 
                 Par exemple, si le paramètre est activé, le token recevant le point de
@@ -114,6 +116,7 @@ healthEstimate:
                 - Endommagé
                 - Rayés
                 - Intacte
+
     PF1:
         showExtra:
             name: Hors-combat & Mourant
@@ -124,7 +127,7 @@ healthEstimate:
             default: Hors-combat
         dyingName:
             name: Mourant
-            hint: Description pour afficher lorsque le token est en dessous 0 PV
+            hint: Description pour afficher lorsque le token est en dessous de 0 PV
             default: Mourant
     numenera:
         countPools:
