@@ -1,3 +1,11 @@
+# If you're unfamiliar with YAML, this comment will explain the syntax you can find in this file:
+#    "-" denotes a list item;
+#    ">-" and "|-" both allow you to break up text into several lines. The difference being "|-" keeps your linebreaks,
+#         while ">-" only adds a linebreak if you have an empty line in the text (see Death Marker entry for example)
+#
+# Generally you can just replace the text without having to worry about that.
+# However using an editor that can highlight the syntax could still be helpful.
+
 healthEstimate:
     core:
         onlyGM:
@@ -7,14 +15,19 @@ healthEstimate:
             name: Joueurs uniquement
             hint: Afficher uniquement les estimations aux joueurs.            
         onlyNPCs:
-            name: PNJ uniquement
-            hint: Afficher uniquement les estimations pour les PNJ, mais pas pour les PJ. Cette option affecte uniquement les PJ.
+            name: Que pour les PNJs
+            hint: Si activé, l'estimation n'est visible que pour les PNJs, mais pas pour les PJs. Cette configuration ne s'applique qu'aux Joueurs.
         onlyPCs:
-            name: PJ uniquement
-            hint: Afficher uniquement les estimations pour les PJ, mais pas pour les PNJ. Cette option affecte uniquement les PJ.       
+            name: PJ Seulement
+            hint: Si activé, l'estimation n'est visible que pour les PJs, mais pas pour les PNJs. Cette configuration ne s'applique qu'aux Joueurs.
         stateNames:
             name: Etapes
-            hint: Série de descriptions présentées aux joueurs, classées du pire au meilleur état de santé possible.
+            hint: >-
+                Série de descriptions présentées aux joueurs, classées du pire au meilleur état de santé possible.
+           
+                Le nombre de descriptions possible n''est pas limité. Le module ajuste propotionelement le pourcentage de santé associé en fonction de ce nombre de choix possibles. 
+
+                S''il y a besoin d'une plage de pourcentage plus grande pour l''une des descriptions, copié simplement plusieurs fois ce nom dans la liste.
             default:
                 - Inconscient
                 - Mourant
@@ -43,63 +56,67 @@ healthEstimate:
                 token marqué avec celui-ci, ouvrez la console et entrez
                 "canvas.tokens.controlled[0].data.overlayEffect"
         NPCsJustDie:
-            name: Mort immédiate des PNJ
+            name: PNJs meurt immédiatement
             hint: >-
-                  Si activé, la description la plus basse dans la liste des descriptions ne sera pas affichée pour les PNJ.
-                  Ils seront directement indiqués comme morts.
+                Avec ce réglage activé, la description la plus basse en mode normal ie ''Inconscient'' ne sera pas affiché pour les PNJs.
+                A la place, ceux-ci seront marqués comme ''Mort''.
         perfectionism:
-            name: Perfectionnisme
-            hint: Afficher uniquement la meilleure description possible quand la cible est en état parfait - pas de dégâts subis.
+            name: Perfectioniste
+            hint: Montre la description la meilleure uniquement si aucun dégat n'a été subit.
         addTemp:
             name: Ajout de PV Temporaires
             hint: >-
                 Inclure les points de vie temporaires dans le calcul de la description à
                 afficher.
 
-                Par exemple, si l'option est activée, le token recevant les point de
-                vie temporaire aura l'air en meilleure santé, à moins qu'il ne soit déjà au
-                maximum de ses points de vie.
+                Par exemple, si le paramètre est activé, le token recevant le point de
+                vie temporaire aura l'air "plus sain " à moins qu'il ne soit déjà au
+                maximum de sa santé.
         breakOnZeroMaxHP:
-            name: Ne pas afficher pour les tokens à 0 PV Max
-            hint: Utile pour les tokens d'objets
+            name: Cacher les token avec 0 Hp Max
+            hint: Utile pour les objets ayant un token
         menuSettings:
             fontSize:
-                name: Taille de la police
+                name: Taille de la Police
                 hint: Accepte toute propriété valable pour CSS font-size
             useColor:
-                name: Utiliser couleur
-                hint: Si désactivé, les descriptions s'afficheront en noir et blanc.
-            smoothGradient:
-                name: Smooth Gradient
+                name: Couleur
                 hint: >-
-                      Si désactivé, la couleur changera seulement lorsque la description suivante est atteinte.
-                      Si activé, elle reflète le pourcentage de points de vie.
+                    Est ce que les descriptions doivent-elles être mises en surbrillance via
+                    un dégradé de couleurs allant du vert au rouge correspondant à l'état de
+                    santé actuel ?
+            smoothGradient:
+                name: Dégradé progressif
+                hint: >-
+                    Avec ce réglage, la couleur ne changera que lorsque la description
+                    suivante sera atteinte. Un pourcentage de santé sera indiqué.
             deadColor:
-                name: Couleur des tokens morts
+                name: Couleur pour les tokens morts
             outline:
-                name:     Contour
-                darken:   Assombri
-                brighten: Éclairci
+                name:       Contour
+                darken:     Plus sombre
+                brighten:   Plus clair
             position:
                 name: Position
                 top:    Haut
                 middle: Milieu
                 bottom: Bas
             positionAdjustment:
-                name:   Ajuster la position
+                name:   Ajustement de la position
                 hint:   >-
-                        La position est relative au cadre. Ce chiffre vous permet de régler la position relative à son endroit
-                        normal. Des nombres positifs la descendent, des négatifs la remontent. La valeur par défaut de -1 la règle à
-                        "1 ligne au dessus de la position initiale".
+                        La position est relative à la frame. Le nombre vous permet d'ajuste la position relative par rapport à sa position normale. 
+                        Un nombre positif pousse le texte vers le bas, negatif vers le haut. La valeur par défaut est -1 est correspond à
+                        "1 ligne en dessous de la position initiale".
     dnd5e:
         vehicleNames:
-            hint: Descriptions affichées pour les véhicules si "Utiliser le seuil de véhicule" is désactivé
-            default:
-                - Détruit
-                - Cassé
-                - Cabossé
-                - Éraflé
-                - Neuf
+            hint: Descriptions shown for vehicles if "Use Vehicle Threshold" is off
+            default:     #There are no official descriptions for the states of the vehicles, so feel free to go with what you feel will work best in your language
+                - Épave
+                - En Panne
+                - Endommagé
+                - Rayés
+                - Intacte
+
     PF1:
         showExtra:
             name: Hors-combat & Mourant
@@ -130,20 +147,20 @@ healthEstimate:
             hint: Le nombre d'étapes est limité à 3, classées du pire au meilleur
             default:
                 - Naufragé
-                - cassé
-                - pleinement fonctionnel
+                - Cassé
+                - Pleinement fonctionnel
         vehicleNames:
             name: Étapes du véhicule
             hint: >-
                 Descriptions indiquées pour les vaisseaux (toujours) et les véhicules
-                (si"Seuil d'utilisation des véhicules" est désactivé)
+                (si "Seuil d'utilisation des véhicules" est désactivé)
             default:
-                - Épaves
+                - Épave
                 - En feu
                 - Fumant
-                - Endommagées
-                - Rayées
-                - Intactes
+                - Endommagé
+                - Rayé
+                - Intacte
         addStamina:
             name: Ajout de l'endurance
             hint: Avec ce réglage l'Endurance sera ajoutée au PV pour les calculs.
