@@ -1,0 +1,152 @@
+# If you're unfamiliar with YAML, this comment will explain the syntax you can find in this file:
+# "-" denotes a list item;
+# ">-" and "|-" both allow you to break up text into several lines. The difference being "|-" keeps your linebreaks,
+# while ">-" only adds a linebreak if you have an empty line in the text (see Death Marker entry for example)
+#
+# Generally you can just replace the text without having to worry about that.
+# However using an editor that can highlight the syntax could still be helpful.
+
+healthEstimate:
+    core:
+        onlyGM:
+            name: 僅GM
+            hint: 僅對GM顯示健康評估。
+        onlyNotGM:
+            name: 僅玩家
+            hint: 僅對玩家顯示健康評估。
+        onlyNPCs:
+            name: 僅NPC
+            hint: 僅顯示NPC的健康評估，而不顯示玩家的。這個設定僅影響玩家。
+        onlyPCs:
+            name: 僅玩家
+            hint: 僅顯示PC的健康評估，而不顯示NPC的。這個設定僅影響玩家。
+        stateNames:
+            name: 階段
+            hint: >-
+                對玩家顯示的一組描述，按照生命值從低到高排列。
+
+                描述的數量沒有限制，模組會按照數量調整顯示的健康百分比。
+
+                如果需要一個描述覆蓋比其他描述更多的健康範圍，則將它複製幾遍即可。
+            default:
+                - 失去意識
+                - 將死之人
+                - 重傷
+                - 受傷
+                - 輕傷
+                - 無傷
+        deathState:
+            name: 死亡狀態顯示
+            hint: 當token被特定狀態標記時將其顯示為死亡。該功能獨立於宏工作。
+        deathStateName:
+            name: 死亡狀態名稱
+            hint: token死亡時顯示給玩家們的描述。合集包中有一個宏用來一或多個token標記為死亡。
+            default: 死亡
+        deathMarker:
+            name: 死亡標記
+            hint: >-
+                  標記死亡token的狀態圖標路徑
+
+                  要獲得一個自定義圖標的路徑，選擇一個被該圖標標記的token，打開控制台並輸入
+                  "canvas.tokens.controlled[0].data.overlayEffect"
+        NPCsJustDie:
+            name: NPC立刻死亡
+            hint: >-
+                  開啓這個選項，描述列表中最差的一項便不會為NPC們顯示，
+                  他們會被顯示為死亡。
+        perfectionism:
+            name: 完美主義
+            hint: 僅在目標的健康狀態全滿時顯示最佳的描述-完全無傷。
+        addTemp:
+            name: 添加臨時生命值
+            hint: |-
+                  顯示描述時將臨時生命值也計算在內。
+                  例如：啓用此選項後，有臨時生命值的token會看起來更“健康”，除非它正處於最大生命值。
+        breakOnZeroMaxHP:
+            name: 在最大hp為0的token上隱藏
+            hint: 對物品token很有用
+        menuSettings:
+            fontSize:
+                name: 字體大小
+                hint: 接受任何可用的CSS字體大小屬性
+            useColor:
+                name: 使用顏色
+                hint: 這並不會影響設置窗口，但禁用該項會讓描述以黑白顯示。
+            smoothGradient:
+                name: 平滑梯度
+                hint: >-
+                      禁用該選項會讓描述的顏色僅在到達下一階段時改變，
+                      啓用該選項則會反映健康百分比。
+            deadColor:
+                name: 死亡token顏色
+            outline:
+                name: 描線
+                darken: 暗色
+                brighten: 亮色
+            position:
+                name: 位置
+                top: 頂部
+                middle: 中部
+                bottom: 底部
+            positionAdjustment:
+                name: 位置調整
+                hint: >-
+                        與方框的相對位置。數字用以調整相對位置。
+                        正數會使其下移，負數上升。默認值-1意為
+                        “初始位置上一行”
+    dnd5e:
+        vehicleNames:
+            hint: 禁用“使用載具閾值”時顯示的描述
+            default: #There are no official descriptions for the states of the vehicles, so feel free to go with what you feel will work best in your language
+                - 毀壞
+                - 破損
+                - 受創
+                - 刮擦
+                - 完好
+    PF1:
+        showExtra:
+            name: 癱瘓和瀕死
+            hint: 顯示“癱瘓”和“瀕死”描述
+        disabledName:
+            name: 癱瘓
+            hint: 當token的HP正好為0時顯示的描述
+            default: 癱瘓
+        dyingName:
+            name: 瀕死
+            hint: 當token的HP低於0時顯示的描述
+            default: 瀕死
+    numenera:
+        countPools:
+            name: 空屬性池計數
+            hint: 為空屬性池計數，而不是統計其值的和。評估僅會在屬性池被刪除或補足時更改。
+    starfinder:
+        useThreshold:
+            name: 使用載具閾值
+            hint: 啓用該選項後，將會使用“閾值階段”中的文本來分別描述在閾值之上、之下和0HP時的載具狀態。
+        thresholdNames:
+            name: 閾值階段
+            hint: 階段的數量限制為3，按狀態從低到高排列。
+            default:
+                - 毀壞
+                - 破損
+                - 功能正常
+        vehicleNames:
+            name: 載具階段
+            hint: 總是為飛船顯示的描述，如果“使用載具閾值”被禁用則也為載具顯示。
+            default: #There are no official descriptions for the states of the ship, so feel free to go with what you feel will work best in your language
+                - 毀壞
+                - 著火
+                - 冒煙
+                - 受創
+                - 刮擦
+                - 完好
+        addStamina:
+            name: 記錄耐力
+            hint: 啓用該選項會將耐力加到HP上用作計算。
+    worldbuilding:
+        simpleRule:
+            name: 評估規則
+            hint: >-
+                     用來計算token生命值分數的公式JS公式。謹慎更改。
+                     默認為簡單的遞減生命值，例如：初始生命值為10/10，受到傷害後降為0/10。
+            default: const hp = token.actor.data.data.health; return hp.value / hp.max
