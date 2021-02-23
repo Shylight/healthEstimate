@@ -51,6 +51,11 @@
 			"lang": "cn",
 			"name": "中文 (Chinese)",
 			"path": "./lang/cn.json"
+		},
+		{
+			"lang": "zh-tw",
+			"name": "正體中文 (Chinese)",
+			"path": "./lang/zh-tw.json"
 		}
 	],
 	"systems": [
