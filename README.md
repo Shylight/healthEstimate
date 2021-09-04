@@ -22,6 +22,8 @@ A simple module for showing estimated health level of an enemy on mouseover, sim
 
 ![example](example.png)
 
+## This project is abbandoned use instead the [fork of mclemente](https://github.com/mclemente/healthEstimate)
+
 ## Contributing
 Please try to use the [develop](https://github.com/Shylight/healthEstimate/tree/develop) branch if you want to make a pull request.
 
